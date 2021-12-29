@@ -1,0 +1,11 @@
+Structure of Checklist:
+
+
+ID:
+
+What to check:
+
+Expected Result:
+
+Comments:
+
