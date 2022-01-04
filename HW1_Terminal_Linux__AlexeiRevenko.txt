@@ -1,0 +1,195 @@
+Первое ДЗ 
+Linux terminal (GitBash) commands
+
+1) Посмотреть где я === pwd
+
+2) Создать папку === mkdir folder1
+
+3) Зайти в папку === cd folder1
+
+4) Создать 3 папки === mkdir folder2 folder3 folder4
+   если вложенные,то mkdir -p folder2/folder3/folder4
+   
+5) Зайти в любоую папку === cd folder2 
+
+6) Создать 5 файлов (3 txt, 2 json) === touch text1.txt text2.txt text3.txt info1.json info2.json
+
+7) Создать 3 папки === mkdir folder5 folder6 folder7
+   если вложенные,то mkdir -p folder5/folder6/folder7
+
+8) Вывести список содержимого папки === ls
+   результат: folder5/  folder6/  folder7/  info1.json  info2.json  text1.txt  text2.txt  text3.txt
+   
+	если использовать - ls -1 (последний символ это единица)
+								folder5/
+								folder6/
+								folder7/
+								info1.json
+								info2.json
+								text1.txt
+								text2.txt
+								text3.txt
+
+	если использовать - ls -l
+								total 0
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 folder5/
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 folder6/
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 folder7/
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 info1.json
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 info2.json
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 text1.txt
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 text2.txt
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 text3.txt
+							
+	если использовать - ls -la
+								total 4
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 ./
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:33 ../
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 folder5/
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 folder6/
+								drwxr-xr-x 1 PARAhod 197121 0 Dec 22 19:39 folder7/
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 info1.json
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 info2.json
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 text1.txt
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 text2.txt
+								-rw-r--r-- 1 PARAhod 197121 0 Dec 22 19:37 text3.txt
+
+
+9) + Открыть любой txt файл === vim text1.txt
+	                      если надо просмотреть файл прямо в терминале: cat text1.txt
+
+10) + написать туда что-нибудь, любой текст - нажать I чтобы внизу слева появилось INSERT и можно вводить текст.
+                                               
+11) + сохранить и выйти === жми  ESC  :wq   Enter
+                          где w = write, q = quit
+
+12) Выйти из папки на уровень выше === cd ..
+
+13) переместить любые 2 файла, которые вы создали, в любую другую папку === mv text2.txt text3.txt folder5/folder8
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку === cp text2.txt text3.txt ../../folder6
+
+15) Найти файл по имени === find . -name "text2.txt"
+							результат: 	./folder2/folder5/folder8/text2.txt
+									./folder2/folder6/text2.txt
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает === tail -f text1.txt
+							Чтобы выйти из процесса нажми Ctrl+C
+                                                        я имитировал работу файла логов добавляя в файл text1.txt 
+							новую информацию, периодически нажимая на Save. Информация 
+							сразу после нажатия на Save отражалась в терминале.
+
+							А команда grep для другого)) это мощный механизм поиска нужных 
+							вхождений в файлах:
+							$ grep -w "ESC" long_text.txt      
+							       -w здесь для того, чтобы искало именно ESC, а не CES, SEC, ECS и др.
+
+                                                        grep чаще используется как своего рода фильтр для других команд:  ls | grep Documents  //найдёт нужную папку
+															  ls | grep 'My Documents' //если есть пробелы, то нужны кавычки.
+							
+17) вывести несколько первых строк из текстового файла === head -3 text1.txt
+							где -3 это количество выводимых строк от начала файла.
+														
+18) вывести несколько последних строк из текстового файла === tail -3 text1.txt
+							где -3 это количество выводимых строк от конца файла.
+		
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает ===  less long_text.txt
+                                                        можно листать вниз/вверх построчно стрелками навигации
+							можно листать вниз/вверх "поэкранно" кнопками PgUp/PgDn
+							можно листать вниз/вверх скролом мышки
+							Команда less удобнее чем more, т.к. more позволяет листать
+							только вниз и только один раз.и у меня more не работает))
+
+20) вывести дату и время ===   date
+				результат:  Tue Jan  4 20:16:35     2022
+
+
+===================================================================================================================
+
+Задание *
+1) Отправить http запрос на сервер.  http://162.55.220.72:5005/object_info_3?name=Vadim&age=32&salary=1000
+
+$ curl "http://162.55.220.72:5005/object_info_3?name=Vadim&age=32&salary=1000"   (отослано методом GET, главное не забыть взять url в кавычки, это важно только когда есть параметры, из-за знака & по-моему)
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   185  100   185    0     0   1288      0 --:--:-- --:--:-- --:--:--  1312
+
+{"age":"32","family":{"children":[["Alex",24],["Kate",12]],"pets":{"cat":{"age":3,"name":"Sunny"},"dog":{"age":4,"name":"Luky"}},"u_salary_1_5_year":4000},"name":"Vadim","salary":1000}
+
+
+
+
+Все HTTP-ответы содержат набор заголовков, которые обычно скрыты. Чтобы увидеть эти заголовки использую ключ -i.
+$ curl -i "http://162.55.220.72:5005/object_info_3?name=Vadim&age=32&salary=1000"
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   185  100   185    0     0   1568      0 --:--:-- --:--:-- --:--:--  1622
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 185
+Server: Werkzeug/2.0.1 Python/3.8.10
+Date: Thu, 23 Dec 2021 18:26:09 GMT
+
+{"age":"32","family":{"children":[["Alex",24],["Kate",12]],"pets":{"cat":{"age":3,"name":"Sunny"},"dog":{"age":4,"name":"Luky"}},"u_salary_1_5_year":4000},"name":"Vadim","salary":1000}
+
+
+
+
+Ради любопытства постучался прямо в корень сервера: $ curl http://162.55.220.72:5005   и он ответил Hello!! 
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100     7  100     7    0     0     56      0 --:--:-- --:--:-- --:--:--    57
+
+Hello!!
+
+__________________________________________________________________
+
+
+2) Написать скрипт, который автоматически выполнит пункты 3-8, 13.
+   Создал текстовый файл script_Revenko.txt с еукстом ниже:
+_____________________________
+#!/bin/bash
+
+# Создадим папку folder1:
+mkdir folder1
+
+# 3) Зайти в папку:
+cd folder1
+
+#4) Создать 3 папки:
+mkdir folder2 folder3 folder4
+  
+#5) Зайти в любую папку:
+cd folder2
+
+#6) Создать 5 файлов (3 txt, 2 json):
+touch text1.txt text2.txt text3.txt info1.json info2.json
+
+#7) Создать 3 папки:
+mkdir folder5 folder6 folder7
+
+#8) Вывести список содержимого папки:
+ls
+
+#для усложнения пути создадим folder8 в folder5:
+cd folder5
+mkdir folder8
+
+#вернемся обратно в folder2:
+cd ..
+
+# 13) переместить  любые 2 файла, которые вы создали, в любую другую папку:
+mv text2.txt text3.txt folder5/folder8
+
+echo Completely done!
+________________________
+
+С помощью: mv script_Revenko.txt script_Revenko.sh создал исполняемый файл. 
+Таким образом команду chmod ugo+x script_Revenko.txt  можно не использовать
+script_Revenko.sh запускал через GitBash, находясь в паке где он лежит, командой: . script_Revenko.sh
+Можно запускать и просто двойным кликом левой кнопки мыши по файлу скрипта.
+
+Как показали опыты, у меня и script_Revenko.txt запускается через команду: . script_Revenko.txt
