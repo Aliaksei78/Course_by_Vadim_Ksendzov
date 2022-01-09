@@ -3,9 +3,12 @@ Structure of Checklist:
 
 ID:
 
-What to check:
+Title:
+
+Actions / Input parameters:
 
 Expected Result:
 
-Comments:
+Status:
 
+Link to bug report:
